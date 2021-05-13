@@ -29,7 +29,7 @@ export class BallBouncy extends Phaser.Scene{
         this.ball.body.gravity.y = gameOptions.ballGravity;
         this.ball.setBounce(1);
         this.ball.setCircle(25);
-        this.ball2 = this.physics.add.sprite(width / 10 * 2, height / 4 * 3 - gameOptions.bounceHeight, 'ball');
+         
         let obstacleX = width;
         for(let i = 0; i < 10; i++){
             let obstacle = this.obstacleGroup.create(obstacleX, this.ground.getBounds().top, 'obstacle');

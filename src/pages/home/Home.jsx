@@ -4,6 +4,8 @@ import React, {useEffect, useState} from "react";
 import Phaser from 'phaser';
 import {useWindowSize} from "../../components/window/WindowSize";
 import { BallBouncy} from "../../components/ball-bouncy/BallBouncy";
+import { BulletScene } from '../../components/bullet-scene/BulletScene';
+import { Camera } from '../../components/camera/Camera';
 
 export const Home = () => {
     const windowSize = useWindowSize();
@@ -17,7 +19,7 @@ export const Home = () => {
                 default: 'arcade'
             },
             parent: 'game',
-            scene: BallBouncy,
+            scene: Camera,
             backgroundColor: '#9adaea'
         };
         setPhaserGame(new Phaser.Game(config));
