@@ -13,14 +13,14 @@ export const Home = () => {
     useEffect(() => {
         const config = {
             type: Phaser.AUTO,
-            width: windowSize.width,
-            height: windowSize.height,
+            width: 800,
+            height: 3000,
+            pixelArt: true,
             physics: {
                 default: 'arcade'
             },
             parent: 'game',
-            scene: Camera,
-            backgroundColor: '#9adaea'
+            scene: [ Camera ]
         };
         setPhaserGame(new Phaser.Game(config));
     }, [windowSize]);

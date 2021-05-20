@@ -20,22 +20,22 @@ export class Camera extends Phaser.Scene
     {
         this.cameras.main.setBounds(0, 0, 3392, 100);
         this.physics.world.setBounds(0, 0, 3392, 240);
-    
-        var map = this.make.tilemap({ key: 'map' });
-        var tileset = map.addTilesetImage('SuperMarioBros-World1-1', 'tiles1');
-        var layer = map.createLayer('World1', tileset, 0, 0);
+
+        const map = this.make.tilemap({ key: 'map' });
+        const tileset = map.addTilesetImage('SuperMarioBros-World1-1', 'tiles1');
+        const layer = map.createLayer('World1', tileset, 0, 0);
     
         this.cursors = this.input.keyboard.createCursorKeys();
     
         this.ship = this.physics.add.image(400, 100, 'ship').setAngle(90).setCollideWorldBounds(true);
-        // this.ship = this.add.image(400, 100, 'ship').setAngle(90);
+        //this.ship = this.add.image(400, 100, 'ship').setAngle(90);
     
         this.cameras.main.startFollow(this.ship, true, 0.08, 0.08);
     
         this.cameras.main.setZoom(4);
     }
 
-    update () 
+    update (time, delta)
     {
         this.ship.setVelocity(0);
 

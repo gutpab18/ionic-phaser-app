@@ -66,7 +66,7 @@ export class BallBouncy extends Phaser.Scene{
         obstacle.x = this.getRightmostObstacle() + Phaser.Math.Between(gameOptions.obstacleDistanceRange[0], gameOptions.obstacleDistanceRange[1]);
         obstacle.setFrame((Phaser.Math.Between(0, 99) < gameOptions.bonusRatio) ? 0 : 1);
     }
-    update(){
+    update(time, delta){
         this.physics.world.collide(this.ground, this.ball, function(){
             if(this.firstBounce == 0){
                 this.firstBounce = this.ball.body.velocity.y;
