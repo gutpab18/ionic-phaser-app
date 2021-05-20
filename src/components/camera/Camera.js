@@ -50,11 +50,11 @@ export class Camera extends Phaser.Scene
     
         if (this.cursors.up.isDown)
         {
-            this.ship.setVelocityY(-200);
+            this.ship.setAngle(0).setVelocityY(-200).setGravityY(-1000);
         }
         else if (this.cursors.down.isDown)
         {
-            this.ship.setVelocityY(200);
+            this.ship.setAngle(-180).setVelocityY(200);
         }
     }
 

@@ -6,6 +6,7 @@ import {useWindowSize} from "../../components/window/WindowSize";
 import { BallBouncy} from "../../components/ball-bouncy/BallBouncy";
 import { BulletScene } from '../../components/bullet-scene/BulletScene';
 import { Camera } from '../../components/camera/Camera';
+import { Platformer } from '../../components/Platformer/Platformer';
 
 export const Home = () => {
     const windowSize = useWindowSize();
@@ -20,7 +21,7 @@ export const Home = () => {
                 default: 'arcade'
             },
             parent: 'game',
-            scene: [ Camera ]
+            scene: [ Platformer ]
         };
         setPhaserGame(new Phaser.Game(config));
     }, [windowSize]);
