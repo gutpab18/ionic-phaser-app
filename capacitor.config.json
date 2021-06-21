@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "ionic-phaser-app",
+  "appId": "com.smartcode.app.FlightShip",
+  "appName": "FlightShip",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
