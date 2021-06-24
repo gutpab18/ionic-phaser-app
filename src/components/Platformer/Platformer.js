@@ -8,6 +8,19 @@ export class Platformer extends Phaser.Scene
     constructor ()
     {
         super("Platformer");
+        this.platformPosition = [{
+            x: 400,
+            y: 568
+        }, {
+            x: 600,
+            y: 400,
+        }, {
+            x: 50,
+            y: 250
+        }, {
+            x: 750,
+            y: 220
+        }];
     }
 
     preload () 
