@@ -38,7 +38,7 @@ export class Platformer extends Phaser.Scene
     this.add.image(400, 300, 'sky');
 
     this.platforms = this.physics.add.staticGroup();
-    for (position of this.platformPosition){
+    for (const position of this.platformPosition){
         this.platforms.create(position.x, position.y, 'ground')
     }
     this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
