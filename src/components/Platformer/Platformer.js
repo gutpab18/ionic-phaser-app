@@ -8,10 +8,7 @@ export class Platformer extends Phaser.Scene
     constructor ()
     {
         super("Platformer");
-        this.platformPosition = [{
-            x: 400,
-            y: 568
-        }, {
+        this.platformPosition = [ {
             x: 600,
             y: 400,
         }, {
@@ -41,12 +38,12 @@ export class Platformer extends Phaser.Scene
     this.add.image(400, 300, 'sky');
 
     this.platforms = this.physics.add.staticGroup();
-
+    for (position of this.platformPosition){
+        this.platforms.create(position.x, position.y, 'ground')
+    }
     this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
-    this.platforms.create(600, 400, 'ground');
-    this.platforms.create(50, 250, 'ground');
-    this.platforms.create(750, 220, 'ground');
+     
     this.player = this.physics.add.sprite(100, 100, 'dude');
 
 this.player.setBounce(0.2);
