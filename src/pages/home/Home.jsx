@@ -7,7 +7,7 @@ import { BallBouncy} from "../../components/ball-bouncy/BallBouncy";
 import { BulletScene } from '../../components/bullet-scene/BulletScene';
 import { Camera } from '../../components/camera/Camera';
 import { Platformer } from '../../components/Platformer/Platformer';
-
+import { PlatformerGameOver } from '../../components/Platformer/PlatformerGameOver';
 export const Home = () => {
     const windowSize = useWindowSize();
     const [phaserGame, setPhaserGame] = useState({});
@@ -21,7 +21,7 @@ export const Home = () => {
                 default: 'arcade'
             },
             parent: 'game',
-            scene: [ Platformer ]
+            scene: [ Platformer, PlatformerGameOver ]
         };
         setPhaserGame(new Phaser.Game(config));
     }, [windowSize]);
