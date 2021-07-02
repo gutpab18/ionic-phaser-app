@@ -19,6 +19,10 @@ export class Platformer extends Phaser.Scene {
         }];
     }
 
+    initialize() {
+        Phaser.Scene.call(this, { "key": "Platformer" });
+    }
+
     preload() {
         this.load.image('sky', 'assets/sky.png');
         this.load.image('ground', 'assets/platform.png');
@@ -130,7 +134,7 @@ export class Platformer extends Phaser.Scene {
     }
 
 
-    update() {
+    update(time, delta) {
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-160);
 
@@ -160,9 +164,9 @@ export class Platformer extends Phaser.Scene {
                 y: 103
             }];
         }
-    if (this.gameOver){
-        this.scene.start("PlatformerGameOver")
-    }     
+        if (this.gameOver){
+            this.scene.start("PlatformerGameOver")
+        }
     }
 
 }

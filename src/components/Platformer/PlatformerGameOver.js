@@ -10,6 +10,10 @@ export class PlatformerGameOver extends Phaser.Scene {
         
     }
 
+    initialize() {
+        Phaser.Scene.call(this, { "key": "PlatformerGameOver" });
+    }
+
     preload() {
         this.load.image('sky', 'assets/sky.png');     
     }
@@ -20,6 +24,7 @@ export class PlatformerGameOver extends Phaser.Scene {
     }
 
 
-    update() {
+    update(time, delta) {
+
     }
 }
