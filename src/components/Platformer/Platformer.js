@@ -130,7 +130,7 @@ export class Platformer extends Phaser.Scene {
     }
 
 
-    update() {
+    update(time, delta) {
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-160);
 
@@ -147,18 +147,6 @@ export class Platformer extends Phaser.Scene {
 
         if (this.cursors.up.isDown && this.player.body.touching.down) {
             this.player.setVelocityY(-330);
-        }
-        if (this.score > 500){
-            this.platformPosition = [{
-                x: 450,
-                y: 150,
-            }, {
-                x: 320,
-                y: 124
-            }, {
-                x: 344,
-                y: 103
-            }];
         }
          
     }
