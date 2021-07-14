@@ -165,6 +165,8 @@ export class Platformer extends Phaser.Scene {
             }];
         }
         if (this.gameOver){
+            this.gameOver = false;
+            this.score = 0;
             this.scene.start("PlatformerGameOver")
         }
     }
