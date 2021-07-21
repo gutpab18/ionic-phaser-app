@@ -8,9 +8,15 @@ import { BulletScene } from '../../components/bullet-scene/BulletScene';
 import { Camera } from '../../components/camera/Camera';
 import { Platformer } from '../../components/Platformer/Platformer';
 import { PlatformerGameOver } from '../../components/Platformer/PlatformerGameOver';
+import { PlatformerStartScreen } from '../../components/Platformer/PlatformerStartScreen';
+import { Storage } from '@ionic/storage';
+
+ 
 export const Home = () => {
     const windowSize = useWindowSize();
     const [phaserGame, setPhaserGame] = useState({});
+    const store = new Storage();
+    await store.create();
     useEffect(() => {
         const config = {
             type: Phaser.AUTO,
@@ -21,7 +27,7 @@ export const Home = () => {
                 default: 'arcade'
             },
             parent: 'game',
-            scene: [ Platformer, PlatformerGameOver ]
+            scene: [PlatformerStartScreen, Platformer, PlatformerGameOver]
         };
         setPhaserGame(new Phaser.Game(config));
     }, [windowSize]);
