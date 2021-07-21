@@ -94,6 +94,8 @@ export class Platformer extends Phaser.Scene {
         this.scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
         this.score = 0;
 
+        this.highScoreText = this.add.text(45, 16, 'high score: 0', {fontSize: '32px', fill: '#000'});
+
         this.bombs = this.physics.add.group();
 
         this.physics.add.collider(this.bombs, this.platforms);
@@ -112,10 +114,17 @@ export class Platformer extends Phaser.Scene {
         this.gameOver = true;
     }
 
-    collectStar(player, star) {
+    async collectStar(player, star) {
         star.disableBody(true, true);
         this.score += 10;
         this.scoreText.setText('Score: ' + this.score);
+
+        const highScore = await this.store.get('highScore');
+        if (this.score > highScore) {
+            await this.store.set('highScore', this.score);
+            this.highScoreText.setText('high score: ' + highScore);
+        }
+
         if (this.stars.countActive(true) === 0) {
             this.stars.children.iterate(function (child) {
 

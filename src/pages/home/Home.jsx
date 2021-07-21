@@ -15,9 +15,7 @@ import { Storage } from '@ionic/storage';
 export const Home = () => {
     const windowSize = useWindowSize();
     const [phaserGame, setPhaserGame] = useState({});
-    const store = new Storage();
-    await store.create();
-    useEffect(() => {
+    useEffect(async () => {
         const config = {
             type: Phaser.AUTO,
             width: 800,
@@ -29,7 +27,11 @@ export const Home = () => {
             parent: 'game',
             scene: [PlatformerStartScreen, Platformer, PlatformerGameOver]
         };
-        setPhaserGame(new Phaser.Game(config));
+        const store = new Storage();
+        await store.create();
+        const game = new Phaser.Game(config)
+        game.store = store;
+        setPhaserGame(game);
     }, [windowSize]);
 
     return <IonContent>
