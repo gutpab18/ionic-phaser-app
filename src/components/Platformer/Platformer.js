@@ -19,7 +19,7 @@ export class Platformer extends Phaser.Scene {
         }];
     }
 
-    initialize() {
+    initialize(config) {
         Phaser.Scene.call(this, { "key": "Platformer" });
     }
 
@@ -35,7 +35,7 @@ export class Platformer extends Phaser.Scene {
     }
 
 
-    create() {
+    create(config) {
         this.add.image(400, 300, 'sky');
 
         this.platforms = this.physics.add.staticGroup();
@@ -94,7 +94,7 @@ export class Platformer extends Phaser.Scene {
         this.scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
         this.score = 0;
 
-        this.highScoreText = this.add.text(45, 16, 'high score: 0', {fontSize: '32px', fill: '#000'});
+        this.highScoreText = this.add.text(200, 16, 'high score: ' + this.game.config.store.get('highScore'), {fontSize: '32px', fill: '#000'});
 
         this.bombs = this.physics.add.group();
 
@@ -119,9 +119,9 @@ export class Platformer extends Phaser.Scene {
         this.score += 10;
         this.scoreText.setText('Score: ' + this.score);
 
-        const highScore = await this.store.get('highScore');
+        const highScore = await this.game.config.store.get('highScore');
         if (this.score > highScore) {
-            await this.store.set('highScore', this.score);
+            await this.game.config.store.set('highScore', this.score);
             this.highScoreText.setText('high score: ' + highScore);
         }
 

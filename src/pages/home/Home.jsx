@@ -16,6 +16,8 @@ export const Home = () => {
     const windowSize = useWindowSize();
     const [phaserGame, setPhaserGame] = useState({});
     useEffect(async () => {
+        const store = new Storage();
+        await store.create();
         const config = {
             type: Phaser.AUTO,
             width: 800,
@@ -27,10 +29,8 @@ export const Home = () => {
             parent: 'game',
             scene: [PlatformerStartScreen, Platformer, PlatformerGameOver]
         };
-        const store = new Storage();
-        await store.create();
-        const game = new Phaser.Game(config)
-        game.store = store;
+        const game = new Phaser.Game(config);
+        game.config.store = store;
         setPhaserGame(game);
     }, [windowSize]);
 
