@@ -20,8 +20,8 @@ export const Home = () => {
         await store.create();
         const config = {
             type: Phaser.AUTO,
-            width: 800,
-            height: 3000,
+            width: window.innerWidth * window.devicePixelRatio,
+            height: window.innerHeight * window.devicePixelRatio,
             pixelArt: true,
             physics: {
                 default: 'arcade'
