@@ -35,7 +35,7 @@ export class Platformer extends Phaser.Scene {
     }
 
 
-    create(config) {
+    async create(config) {
         this.add.image(400, 300, 'sky');
 
         this.platforms = this.physics.add.staticGroup();
@@ -94,7 +94,7 @@ export class Platformer extends Phaser.Scene {
         this.scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
         this.score = 0;
 
-        this.highScoreText = this.add.text(200, 16, 'high score: ' + this.game.config.store.get('highScore'), {fontSize: '32px', fill: '#000'});
+        this.highScoreText = this.add.text(200, 16, 'high score: ' + await this.game.config.store.get('highScore'), {fontSize: '32px', fill: '#000'});
 
         this.bombs = this.physics.add.group();
 
