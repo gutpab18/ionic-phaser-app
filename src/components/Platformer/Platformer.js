@@ -121,7 +121,7 @@ export class Platformer extends Phaser.Scene {
 
         const highScore = await this.game.config.store.get('highScore');
         if (this.score > highScore) {
-            await this.game.config.store.set('highScore', this.score);
+            await this.game.config.store.set('highScore', this.score + 10);
             this.highScoreText.setText('high score: ' + highScore);
         }
 
